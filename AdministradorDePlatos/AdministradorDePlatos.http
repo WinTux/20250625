@@ -1,0 +1,6 @@
+@AdministradorDePlatos_HostAddress = http://localhost:5236
+
+GET {{AdministradorDePlatos_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
