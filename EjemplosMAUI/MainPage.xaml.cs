@@ -1,24 +1,37 @@
-﻿namespace EjemplosMAUI
+﻿using EjemplosMAUI.Conexion;
+using EjemplosMAUI.Models;
+using EjemplosMAUI.Pages;
+using System.Diagnostics;
+
+namespace EjemplosMAUI
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
-        public MainPage()
+        private readonly IRestConexionDatos _restConexionDatos;
+        public MainPage(IRestConexionDatos restConexionDatos)
         {
             InitializeComponent();
+            _restConexionDatos = restConexionDatos;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        protected async override void OnAppearing()
         {
-            count++;
+            base.OnAppearing();
+            coleccionPlatosView.ItemsSource = await _restConexionDatos.GetPlatosAsync();
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        async void OnAddPlatoClic(object sender, EventArgs e)
+        {
+           Debug.WriteLine("OnAddPlatoClic invoked.");
+           var param = new Dictionary<string, object>
+            {
+                { nameof(Plato), new Plato()  }
+            };
+            await Shell.Current.GoToAsync(nameof(GestionPlatosPage), param);
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        async void OnElementoCambiado(object sender, SelectionChangedEventArgs e) {
+            Debug.WriteLine("OnElementoCambiado invoked.");
         }
     }
 

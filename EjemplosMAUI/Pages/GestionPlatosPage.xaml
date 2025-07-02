@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EjemplosMAUI.Pages.GestionPlatosPage"
+             Title="Asuntos de platos">
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="BackgroundColor" Value="LightGray"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*,*">
+        
+    </Grid>
+    <VerticalStackLayout Margin="20">
+        <Label Text="Accion sobre los platos" FontSize="Large" HorizontalOptions="Center"/>
+        <Entry Text="{Binding Path=plato.Nombre}" Placeholder="Introduzca el nombre del plato"/>
+
+        <Button Text="Guardar" Clicked="OnGuardarPlato"/>
+        <Button Text="Eliminar" Clicked="OnEliminarPlato"/>
+        <Button Text="Cancelar" Clicked="OnCancelarClic"/>
+    </VerticalStackLayout>
+</ContentPage>
