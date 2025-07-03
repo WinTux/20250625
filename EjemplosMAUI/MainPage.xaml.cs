@@ -32,6 +32,11 @@ namespace EjemplosMAUI
 
         async void OnElementoCambiado(object sender, SelectionChangedEventArgs e) {
             Debug.WriteLine("OnElementoCambiado invoked.");
+            var param = new Dictionary<string, object>
+            {
+                { nameof(Plato), e.CurrentSelection.FirstOrDefault() as Plato }
+            };
+            await Shell.Current.GoToAsync(nameof(GestionPlatosPage), param);
         }
     }
 

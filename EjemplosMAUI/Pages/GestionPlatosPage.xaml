@@ -12,14 +12,15 @@
         </Style>
     </ContentPage.Resources>
     <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*,*">
-        
+        <TableView Intent="Data" Grid.Row="0" Grid.ColumnSpan="3">
+            <TableRoot>
+                <TableSection Title="Accion sobre los platos">
+                    <EntryCell Text="{Binding Path=plato.Nombre}" Placeholder="Introduzca el nombre del plato"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button Text="Guardar" Clicked="OnGuardarPlato" Grid.Row="1" Grid.Column="2"/>
+        <Button Text="Eliminar" Clicked="OnEliminarPlato" Grid.Row="1" Grid.Column="1"/>
+        <Button Text="Cancelar" Clicked="OnCancelarClic" Grid.Row="1" Grid.Column="0"/>
     </Grid>
-    <VerticalStackLayout Margin="20">
-        <Label Text="Accion sobre los platos" FontSize="Large" HorizontalOptions="Center"/>
-        <Entry Text="{Binding Path=plato.Nombre}" Placeholder="Introduzca el nombre del plato"/>
-
-        <Button Text="Guardar" Clicked="OnGuardarPlato"/>
-        <Button Text="Eliminar" Clicked="OnEliminarPlato"/>
-        <Button Text="Cancelar" Clicked="OnCancelarClic"/>
-    </VerticalStackLayout>
 </ContentPage>

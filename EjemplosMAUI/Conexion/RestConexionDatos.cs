@@ -119,7 +119,7 @@ namespace EjemplosMAUI.Conexion
                 // Convertir el objeto Plato a JSON
                 string jsonPlato = JsonSerializer.Serialize(plato, opcionesJson);
                 StringContent contenido = new StringContent(jsonPlato, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await httpClient.PutAsync($"{url}/plato", contenido);
+                HttpResponseMessage response = await httpClient.PutAsync($"{url}/plato/{plato.Id}", contenido);
                 if (response.IsSuccessStatusCode)
                 {
                     Debug.WriteLine("Plato modificado correctamente.");
